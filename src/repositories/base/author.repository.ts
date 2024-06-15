@@ -12,7 +12,7 @@ export class authorRepository {
     async create_author(author: author) {
         try {
 
-            const { birthdate, id, name, biography } = author
+            const { birthdate, name, biography } = author
             const data = new this._author_model({
                 name: name,
                 birthdate: birthdate,
@@ -34,8 +34,8 @@ export class authorRepository {
     //
     async update_author(author: author) {
         try {
-            const { birthdate, id, name, biography } = author
-            return await this._author_model.findByIdAndUpdate({ _id: id },
+            const { birthdate, _id, name, biography } = author
+            return await this._author_model.findByIdAndUpdate({ _id: _id },
                 { $set: { name: name, birthdate: birthdate, biography: biography } }
             )
 

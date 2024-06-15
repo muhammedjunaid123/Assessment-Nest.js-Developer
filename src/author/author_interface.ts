@@ -1,7 +1,7 @@
 import { ObjectId } from "mongoose";
 
 export interface author{
-    id?:ObjectId,
+    _id?:ObjectId,
     name:String,
     biography?:String,
     birthdate:Date
