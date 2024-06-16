@@ -55,14 +55,28 @@ export class bookRepository {
         try {
             const data = await this._bookModel.find({ authorId: authorId });
             console.log(data);
-            
+
             if (data == null) throw new Error('Book not found');
             return data;
         } catch (error) {
             throw new Error(error);
         }
     }
-    book_date_filter(start:Date,end:Date){
-        
+    book_date_filter(start: Date, end: Date) {
+        try {
+            start = new Date(start)
+            end = new Date(end)
+
+            return this._bookModel.aggregate([{
+                $match: {
+                    publishedDate: {
+                        $gte: start,
+                        $lte: end
+                    }
+                }
+            }])
+        } catch (error) {
+            throw new Error(error);
+        }
     }
 }

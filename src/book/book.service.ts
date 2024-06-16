@@ -51,7 +51,12 @@ export class BookService {
             return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error: error['message'], message: "INTERNAL SERVER ERROR" });
         });
     }
-    book_date_filter(start:Date,end:Date,res){
-        this._bookRepository.book_date_filter(start,end)
+    book_date_filter(start:Date,end:Date,res:Response){
+        this._bookRepository.book_date_filter(start,end).then((result: book[]) => {
+            return res.status(HttpStatus.OK).json(result);
+        })
+            .catch((error) => {
+                return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error: error['message'], message: "INTERNAL SERVER ERROR" });
+            });
     }
 }
