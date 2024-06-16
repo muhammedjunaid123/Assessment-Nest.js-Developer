@@ -21,6 +21,7 @@ export class AuthorController {
   async create_author(@Body() author: CreateAuthorDto, @Res() res: Response) {
     return this._authorService.create_author(author, res)
   }
+  @Get('get_author')
   @ApiOkResponse({
     description:"getting all author data in array",
     type:[Author]
@@ -28,11 +29,11 @@ export class AuthorController {
   @ApiBadRequestResponse({
     description:'INTERNAL SERVER ERROR'
   })
-  @Get('get_author')
   async get_author(@Res() res: Response) {
     return this._authorService.get_author(res)
   }
   
+  @Patch('update_author')
   @ApiOkResponse({
     description:"author updated",
     type:Author
@@ -40,18 +41,17 @@ export class AuthorController {
   @ApiBadRequestResponse({
     description:'INTERNAL SERVER ERROR'
   })
-  @Patch('update_author')
   async update_author(@Body() author: UpdateAuthorDto, @Res() res: Response) {
     return this._authorService.update_author(author, res)
   }
 
+  @Delete('delete_author')
   @ApiOkResponse({
     description:"author deleted",
   })
   @ApiBadRequestResponse({
     description:'INTERNAL SERVER ERROR'
   })
-  @Delete('delete_author')
   async delete_author(@Body() id: DeleteAuthorDto, @Res() res: Response) {
     return this._authorService.delete_author(id, res)
   }

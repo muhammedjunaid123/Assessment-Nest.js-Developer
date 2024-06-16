@@ -1,5 +1,5 @@
 import { Inject } from "@nestjs/common";
-import { Model } from "mongoose";
+import { Model, ObjectId } from "mongoose";
 import { book } from "src/book/book_interface";
 
 export class bookRepository {
@@ -42,7 +42,7 @@ export class bookRepository {
         }
     }
 
-    async delete_book(id: string) {
+    async delete_book(id:ObjectId) {
         try {
             const data = await this._bookModel.findByIdAndDelete({ _id: id });
             if (data == null) throw new Error('Book not found');
@@ -51,7 +51,7 @@ export class bookRepository {
             throw new Error(error);
         }
     }
-    async specific_author_books(authorId: string) {
+    async specific_author_books(authorId: ObjectId) {
         try {
             const data = await this._bookModel.find({ authorId: authorId });
             console.log(data);
