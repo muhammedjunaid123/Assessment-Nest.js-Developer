@@ -1,9 +1,9 @@
-import { Body, Controller, Delete, Get, Patch, Post, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Patch, Post, Query, Res } from '@nestjs/common';
 import { BookService } from './book.service';
 import { book } from './book_interface';
-import { Response } from 'express';
+import { Response, query } from 'express';
 import { ApiBadRequestResponse, ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { CreateBookDto, DeleteBookDto, UpdateBookDto, dateFilterDto, searchBookDto } from './Dto/book.Dto';
+import { CreateBookDto, DeleteBookDto, GetBookDto, UpdateBookDto, dateFilterDto, searchBookDto } from './Dto/book.Dto';
 import { Book } from './entity/book.entity';
 
 
@@ -32,8 +32,9 @@ export class BookController {
   @ApiBadRequestResponse({
     description: 'INTERNAL SERVER ERROR'
   })
-  async get_book(@Res() res: Response) {
-    return this._bookService.get_book(res);
+  async get_book(@Query('page') page: GetBookDto, @Res() res: Response) {
+
+    return this._bookService.get_book(page, res);
   }
 
   @Patch('update_book')

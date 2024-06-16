@@ -2,7 +2,7 @@ import { Body, HttpStatus, Injectable } from '@nestjs/common';
 import { bookRepository } from 'src/repositories/base/book.repository';
 import { book } from './book_interface';
 import { Response } from 'express';
-import { DeleteBookDto, dateFilterDto, searchBookDto } from './Dto/book.Dto';
+import { DeleteBookDto, GetBookDto, dateFilterDto, searchBookDto } from './Dto/book.Dto';
 
 @Injectable()
 export class BookService {
@@ -18,8 +18,9 @@ export class BookService {
             });
     }
 
-    get_book(res: Response) {
-        this._bookRepository.get_books().then((result: book[]) => {
+    get_book(page:GetBookDto,res: Response) {
+        const page_no=page['page']
+        this._bookRepository.get_books(page_no).then((result: book[]) => {
             return res.status(HttpStatus.OK).json(result);
         })
             .catch((error) => {

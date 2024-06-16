@@ -21,9 +21,10 @@ export class bookRepository {
         }
     }
 
-    async get_books() {
+    async get_books(page:number) {
         try {
-            return await this._bookModel.find();
+            const skip = (page - 1) * 10;
+            return await this._bookModel.find().skip(skip).limit(10).exec();
         } catch (error) {
             throw new Error(error);
         }

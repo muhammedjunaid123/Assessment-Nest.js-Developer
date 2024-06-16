@@ -95,6 +95,16 @@ export class DeleteBookDto {
     _id: ObjectId
 }
 
+export class GetBookDto {
+    @ApiProperty({
+        description: 'The Query of the page number',
+        example: '1'
+    })
+    @IsString()
+    @IsNotEmpty()
+    page:number
+}
+
 
 export class searchBookDto {
     @ApiProperty({
