@@ -3,6 +3,7 @@ import { author } from './author_interface';
 import { authorRepository } from 'src/repositories/base/author.repository';
 import { Response } from 'express';
 import { error } from 'console';
+import { DeleteAuthorDto } from './Dto/author.Dto';
 
 @Injectable()
 export class AuthorService {
@@ -34,8 +35,9 @@ export class AuthorService {
                 return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error: error['message'], message: "author not updated" })
             })
     }
-    delete_author(id: string, res: Response) {
-        this._authorRepository.delete_author(id).then(() => {
+    delete_author(id: DeleteAuthorDto, res: Response) {
+        const Id=id['_id']
+        this._authorRepository.delete_author(Id).then(() => {
             return res.status(HttpStatus.OK).json({ message: "author deleted" })
         })
             .catch((error) => {

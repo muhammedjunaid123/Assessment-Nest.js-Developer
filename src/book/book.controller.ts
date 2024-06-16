@@ -2,7 +2,10 @@ import { Body, Controller, Delete, Get, Patch, Post, Res } from '@nestjs/common'
 import { BookService } from './book.service';
 import { book } from './book_interface';
 import { Response } from 'express';
+import { ApiTags } from '@nestjs/swagger';
 
+
+@ApiTags('book')
 @Controller('book')
 export class BookController {
   constructor(private readonly _bookService: BookService) { }
