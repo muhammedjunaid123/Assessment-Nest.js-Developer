@@ -51,4 +51,18 @@ export class bookRepository {
             throw new Error(error);
         }
     }
+    async specific_author_books(authorId: string) {
+        try {
+            const data = await this._bookModel.find({ authorId: authorId });
+            console.log(data);
+            
+            if (data == null) throw new Error('Book not found');
+            return data;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+    book_date_filter(start:Date,end:Date){
+        
+    }
 }

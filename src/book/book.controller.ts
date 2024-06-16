@@ -5,7 +5,7 @@ import { Response } from 'express';
 
 @Controller('book')
 export class BookController {
-  constructor(private readonly _bookService: BookService) {}
+  constructor(private readonly _bookService: BookService) { }
 
   @Post('create_book')
   async create_book(@Body() book: book, @Res() res: Response) {
@@ -26,5 +26,12 @@ export class BookController {
   async delete_book(@Body('id') id: string, @Res() res: Response) {
     return this._bookService.delete_book(id, res);
   }
-
+  @Get('specific_author_books')
+  async specific_author_books(@Body('authorId') authorId: string, @Res() res: Response) {
+    return this._bookService.specific_author_books(authorId, res)
+  }
+  @Get('book_date_filter')
+  async book_date_filter(@Body('start') start: Date, @Body('end') end: Date, @Res() res: Response) {
+    return this._bookService.book_date_filter(start, end, res)
+  }
 }

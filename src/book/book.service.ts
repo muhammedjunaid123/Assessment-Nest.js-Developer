@@ -6,7 +6,7 @@ import { Response } from 'express';
 @Injectable()
 export class BookService {
 
-    constructor(private  _bookRepository: bookRepository){}
+    constructor(private _bookRepository: bookRepository) { }
 
     create_book(book: book, res: Response) {
         this._bookRepository.create_book(book).then((result: book) => {
@@ -42,5 +42,16 @@ export class BookService {
             .catch((error) => {
                 return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error: error['message'], message: "INTERNAL SERVER ERROR" });
             });
+    }
+    specific_author_books(authorId: string, res: Response) {
+     this._bookRepository.specific_author_books(authorId).then((result: book[]) => {
+        return res.status(HttpStatus.OK).json(result);
+    })
+        .catch((error) => {
+            return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error: error['message'], message: "INTERNAL SERVER ERROR" });
+        });
+    }
+    book_date_filter(start:Date,end:Date,res){
+        this._bookRepository.book_date_filter(start,end)
     }
 }
