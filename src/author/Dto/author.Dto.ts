@@ -28,7 +28,7 @@ export class CreateAuthorDto {
 
     @ApiProperty({
         description: 'The birthdate of the author',
-        example: ' July 15, 1975'
+        example: 'Mon Jun 17 2024 08:49:20 GMT+0530 (India Standard Time)'
     })
     @IsDate()
     @IsNotEmpty()
@@ -61,7 +61,7 @@ export class UpdateAuthorDto {
 
     @ApiProperty({
         description: 'The birthdate of the author',
-        example: ' July 15, 1975'
+        example: 'Mon Jun 17 2024 08:49:20 GMT+0530 (India Standard Time)'
     })
     @IsDate()
     @IsNotEmpty()

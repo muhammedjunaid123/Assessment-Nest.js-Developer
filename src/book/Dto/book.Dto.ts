@@ -36,7 +36,7 @@ export class CreateBookDto {
 
     @ApiProperty({
         description: 'The publishedDate of the book',
-        example: 'July 15, 1975'
+        example: 'Mon Jun 17 2024 08:49:20 GMT+0530 (India Standard Time)'
     })
     @IsObject()
     @IsNotEmpty()
@@ -78,7 +78,7 @@ export class UpdateBookDto {
 
     @ApiProperty({
         description: 'The publishedDate of the book',
-        example: 'July 15, 1975'
+        example: 'Mon Jun 17 2024 08:49:20 GMT+0530 (India Standard Time)'
     })
     @IsObject()
     @IsNotEmpty()
@@ -118,7 +118,7 @@ export class searchBookDto {
 export class dateFilterDto{
     @ApiProperty({
         description: 'The start date',
-        example: 'July 15, 1975'
+        example: 'Mon Jun 17 2024 08:49:20 GMT+0530 (India Standard Time)'
     })
     @IsObject()
     @IsNotEmpty()
@@ -126,7 +126,7 @@ export class dateFilterDto{
 
     @ApiProperty({
         description: 'The end date',
-        example: 'July 17, 1975'
+        example: 'Mon Jun 17 2024 08:49:20 GMT+0530 (India Standard Time)'
     })
     @IsObject()
     @IsNotEmpty()
