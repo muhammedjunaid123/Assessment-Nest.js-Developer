@@ -33,10 +33,11 @@ export class bookRepository {
     async update_book(book: book) {
         try {
             const { _id, title, description, authorId, publishedDate } = book;
+            console.log(book);
+            
             return await this._bookModel.findByIdAndUpdate(
                 { _id: _id },
                 { $set: { title: title, description: description, authorId: authorId, publishedDate: publishedDate } },
-                { new: true }
             );
         } catch (error) {
             throw new Error(error);
@@ -67,7 +68,8 @@ export class bookRepository {
         try {
             start = new Date(start)
             end = new Date(end)
-
+   console.log(start,end);
+   
             return this._bookModel.aggregate([{
                 $match: {
                     publishedDate: {

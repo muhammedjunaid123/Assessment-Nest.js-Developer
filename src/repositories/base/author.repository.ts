@@ -33,7 +33,7 @@ export class authorRepository {
     }
     //
     async update_author(author: author) {
-        try {
+        try { 
             const { birthdate, _id, name, biography } = author
             return await this._author_model.findByIdAndUpdate({ _id: _id },
                 { $set: { name: name, birthdate: birthdate, biography: biography } }

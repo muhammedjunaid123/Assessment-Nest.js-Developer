@@ -18,9 +18,7 @@ export class AuthorController {
   @ApiBadRequestResponse({
     description:"author not created"
   })
-  async create_author(@Body() author: CreateAuthorDto, @Res() res: Response) {
-    console.log(author);
-    
+  async create_author(@Body() author: CreateAuthorDto, @Res() res: Response) {  
     return this._authorService.create_author(author, res)
   }
   @Get('get_author')

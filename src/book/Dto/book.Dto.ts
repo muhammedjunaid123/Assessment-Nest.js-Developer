@@ -80,7 +80,7 @@ export class UpdateBookDto {
         description: 'The publishedDate of the book',
         example: 'Mon Jun 17 2024 08:49:20 GMT+0530 (India Standard Time)'
     })
-    @IsObject()
+    @IsDate()
     @IsNotEmpty()
     publishedDate: Date;
 }
@@ -120,7 +120,7 @@ export class dateFilterDto{
         description: 'The start date',
         example: 'Mon Jun 17 2024 08:49:20 GMT+0530 (India Standard Time)'
     })
-    @IsObject()
+    @IsDate()
     @IsNotEmpty()
     start: Date;
 
@@ -128,7 +128,7 @@ export class dateFilterDto{
         description: 'The end date',
         example: 'Mon Jun 17 2024 08:49:20 GMT+0530 (India Standard Time)'
     })
-    @IsObject()
+    @IsDate()
     @IsNotEmpty()
     end: Date;
 }
